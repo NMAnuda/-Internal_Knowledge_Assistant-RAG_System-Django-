@@ -1,0 +1,9 @@
+Django>=4.2
+djangorestframework
+django-environ
+djangorestframework-simplejwt
+sentence-transformers
+faiss-cpu
+python-dotenv
+PyPDF2
+python-docx
