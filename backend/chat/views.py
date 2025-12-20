@@ -1,14 +1,15 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rag_engine.retriever import retrieve
+from rag_engine.generator import generate_answer
 
 class AskQuestionView(APIView):
     def post(self, request):
-        question = request.data.get('question')
-        if not question:
-            return Response({'error': 'Question required'}, status=400)
-        print("question",question)
-        docs = retrieve(question)
-        # simple RAG response: join retrieved docs
-        answer = "\n".join(docs)
-        return Response({'answer': answer})
+        question = request.data.get("question")
+        context = retrieve(question)
+        answer = generate_answer(question, context)
+
+        return Response({
+            "answer": answer,
+            "sources": context
+        })
