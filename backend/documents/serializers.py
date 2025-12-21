@@ -4,4 +4,4 @@ from .models import Document
 class DocumentUploadSerializer(serializers.ModelSerializer):
     class Meta:
         model = Document
-        fields = ["id", "title", "file"]
+        fields = ["file", "doc_name", "department"]

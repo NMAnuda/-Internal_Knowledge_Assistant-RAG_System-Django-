@@ -11,8 +11,11 @@ class DocumentUploadView(APIView):
         if serializer.is_valid():
             document = serializer.save()
 
-            
-            ingest_document(document.file.path)
+            ingest_document(
+                file_path=document.file.path,
+                doc_name=document.file.name,
+                department=document.department
+            )
 
             return Response(
                 {"message": "Document uploaded and indexed"},
