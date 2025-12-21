@@ -2,12 +2,17 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rag_engine.retriever import retrieve
 from rag_engine.generator import generate_answer
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import api_view, permission_classes
 
 class AskQuestionView(APIView):
+    permission_classes = [IsAuthenticated]  # 🔥 NEW: Requires login
+    
     def post(self, request):
+        # Get user role from token
+        user_role = request.user.role
         question = request.data.get("question")
         department = request.data.get("department")
-        user_role = request.data.get("user_role")
 
         docs, error = retrieve(question, department, user_role)
 
