@@ -9,16 +9,19 @@ def add_documents(docs):
 
 def retrieve(question, department, user_role, top_k=3):
     if not has_access(user_role, department):
-        print("has_acess",user_role,department)
         return None, "Access denied for this department"
 
     query_vec = embed_text(question)
     results = store.search(query_vec, top_k)
 
-    # department filter
-    results = [
-        r for r in results
-        if r["department"].upper() == department.upper()
-    ]
+    # Department filter
+    results = [r for r in results if r["department"].upper() == department.upper()]
 
-    return results, None
+    if not results:
+        return [], "No relevant documents found"
+
+    #  CALCULATE CONFIDENCE SCORE (avg similarity; 1 - normalized distance for relevance)
+    avg_score = sum(r["score"] for r in results) / len(results)
+    confidence = "high" if avg_score > 0.8 else "medium" if avg_score > 0.5 else "low"
+
+    return results, confidence

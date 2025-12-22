@@ -1,0 +1,40 @@
+[
+  {
+    "query": "What is the leave policy?",
+    "department": "HR",
+    "expected_relevant_docs": ["documents/hrpolicy_jpUYSE9.pdf"],
+    "expected_answer_snippets": ["annual leave", "sick leave", "casual leave"]
+  },
+  {
+    "query": "What are standard working hours?",
+    "department": "HR",
+    "expected_relevant_docs": ["documents/hrpolicy_jpUYSE9.pdf"],  
+    "expected_answer_snippets": ["9:00 AM to 5:00 PM", "Monday to Friday"]
+  },
+  {
+    "query": "How to handle code of conduct violations?",
+    "department": "HR",
+    "expected_relevant_docs": ["documents/hrpolicy_jpUYSE9.pdf"],
+    "expected_answer_snippets": ["disciplinary action", "termination"]
+  },
+  {
+    "query": "What is the confidentiality policy?",
+    "department": "HR",
+    "expected_relevant_docs": ["documents/hrpolicy_jpUYSE9.pdf"],
+    "expected_answer_snippets": ["confidential", "internal information"]
+  },
+
+
+  {
+    "query": "What is the weather today?", 
+    "department": "GENERAL",
+    "expected_relevant_docs": [], 
+    "expected_answer_snippets": []
+  },
+  {
+    "query": "Finance budget process?",
+    "department": "FINANCE",
+    "expected_relevant_docs": ["documents/finance_policy.pdf"], 
+    "expected_answer_snippets": ["annual budget", "approval"]
+  }
+]

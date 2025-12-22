@@ -1,0 +1,50 @@
+[
+  {
+    "query": "What is the leave policy?",
+    "precision": 1.0,
+    "recall": 1.0,
+    "faithfulness": 1.0,
+    "confidence": "high",
+    "answer": "Employees are entitled to annual leave, sick leave, and casual leave as per company regulations [1]. \n\nSources: [1] documents/hrpolicy_jpUYSE9.pdf"
+  },
+  {
+    "query": "What are standard working hours?",
+    "precision": 1.0,
+    "recall": 1.0,
+    "faithfulness": 1.0,
+    "confidence": "high",
+    "answer": "Standard working hours are 9:00 AM to 5:00 PM, Monday to Friday, excluding public holidays [1].\n\nSources: [1] documents/hrpolicy_jpUYSE9.pdf"
+  },
+  {
+    "query": "How to handle code of conduct violations?",
+    "precision": 1.0,
+    "recall": 1.0,
+    "faithfulness": 1.0,
+    "confidence": "high",
+    "answer": "To handle code of conduct violations, the company may take disciplinary action, which can include termination of employment. Employees are expected to maintain integrity, respect colleagues, and avoid conflicts of interest, and any violation of these principles may lead to consequences as outlined in the HR policy [1].\n\nSources: [1] documents/hrpolicy_jpUYSE9.pdf"
+  },
+  {
+    "query": "What is the confidentiality policy?",
+    "precision": 1.0,
+    "recall": 1.0,
+    "faithfulness": 1.0,
+    "confidence": "high",
+    "answer": "The confidentiality policy states that all company documents, data, and internal information must remain confidential [1]. \n\nSources: [1] documents/hrpolicy_jpUYSE9.pdf"
+  },
+  {
+    "query": "What is the weather today?",
+    "precision": 0,
+    "recall": 0,
+    "faithfulness": 0,
+    "confidence": "No relevant documents found",
+    "answer": ""
+  },
+  {
+    "query": "Finance budget process?",
+    "precision": 0,
+    "recall": 0,
+    "faithfulness": 0,
+    "confidence": "No relevant documents found",
+    "answer": ""
+  }
+]
