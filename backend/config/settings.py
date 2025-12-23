@@ -1,5 +1,6 @@
 import environ
 from pathlib import Path
+from datetime import timedelta
 
 # -----------------------------
 # BASE DIR
@@ -10,9 +11,7 @@ AUTH_USER_MODEL = 'accounts.User'
 # -----------------------------
 # ENV
 # -----------------------------
-env = environ.Env(
-    DEBUG=(bool, False)
-)
+env = environ.Env(DEBUG=(bool, False))
 environ.Env.read_env(BASE_DIR / "backend/.env")
 
 # -----------------------------
@@ -32,14 +31,19 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
+    'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
+
     "accounts",
     "documents",
     "chat",
 ]
 
+# ⬅️ CRITICAL ORDER
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -51,6 +55,33 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "config.urls"
 
+# -----------------------------
+# CORS CONFIG (FIXED)
+# -----------------------------
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = False
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+]
+
+CORS_ALLOW_HEADERS = [
+    "authorization",
+    "content-type",
+    "accept",
+]
+
+CORS_ALLOW_METHODS = [
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+]
+
+# -----------------------------
+# TEMPLATES
+# -----------------------------
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -69,6 +100,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
+
 # -----------------------------
 # DATABASE
 # -----------------------------
@@ -83,13 +115,11 @@ DATABASES = {
 # STATIC FILES
 # -----------------------------
 STATIC_URL = "/static/"
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-#-----------------------------
-# JWT Config
-#-----------------------------
-from datetime import timedelta
+# -----------------------------
+# REST + JWT
+# -----------------------------
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',

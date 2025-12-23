@@ -10,7 +10,7 @@ class ChatMessage(models.Model):
     department = models.CharField(max_length=100, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     sources = models.JSONField(default=list, blank=True)
-    confidence = models.CharField(max_length=10, default='medium', choices=[  # 🔥 NEW FIELD
+    confidence = models.CharField(max_length=10, default='medium', choices=[  
         ('high', 'High'),
         ('medium', 'Medium'),
         ('low', 'Low')
