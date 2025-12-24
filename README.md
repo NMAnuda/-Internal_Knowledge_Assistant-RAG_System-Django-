@@ -1,4 +1,4 @@
-# Company Internal Knowledge Chatbot (Django + RAG)
+# Internal Knowledge Assistant – RAG System (Django)
 
 An AI-powered internal knowledge assistant built using Django REST Framework and Retrieval-Augmented Generation (RAG).
 The system allows organizations to upload internal documents and enables employees to query company-specific knowledge securely and accurately.
