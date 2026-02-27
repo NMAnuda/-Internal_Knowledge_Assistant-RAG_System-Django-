@@ -1,14 +1,14 @@
 # Internal Knowledge Assistant – RAG System (Django)
 
 An AI-powered internal knowledge assistant built using Django REST Framework and Retrieval-Augmented Generation (RAG).
-The system allows organizations to upload internal documents and enables employees to query company-specific knowledge securely and accurately.
+The system allows organizations to upload internal documents and enables employees to query company-specific knowledge securely and accurately using a self-hosted or external LLM.
 
 ## Core Features
 
 * Upload internal documents (PDF / text-based)
 * Intelligent document chunking
 * Semantic search using FAISS vector database
-* LLM-powered answer generation
+* LLM-powered answer generation (self-hosted)
 * Answers strictly grounded on internal documents (RAG)
 * Department-based document filtering
 * Context-aware responses
@@ -26,7 +26,7 @@ The system allows organizations to upload internal documents and enables employe
 
 ### Backend
 
-Python | Django | Django REST Framework | FAISS (Vector Search) | OpenAI API (LLM) | JWT Authentication
+Python | Django | Django REST Framework | FAISS (Vector Search) | Self-Hosted LLM(qwen2) | JWT Authentication
 
 ### AI / NLP
 
@@ -86,7 +86,7 @@ Company Internal Knowledge Chatbot (Django + RAG)
     │   │   ├── vector_store.py           # FAISS index
     │   │   ├── pipeline
     │   │   ├── retriever.py              # Search + access control
-    │   │   └── generator.py              # OpenAI LLM
+    │   │   └── generator.py              # Self-hosted
     │   ├── evaluation/                   # RAG evaluation
     │   │   └── eval_rag.py               # Precision / Recall / Faithfulness
     │   ├── manage.py
