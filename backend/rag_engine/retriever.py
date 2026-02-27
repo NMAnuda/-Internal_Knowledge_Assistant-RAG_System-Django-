@@ -13,10 +13,11 @@ def retrieve(question, department, user_role, top_k=3):
 
     query_vec = embed_text(question)
     results = store.search(query_vec, top_k)
-
+   
     # Department filter
     results = [r for r in results if r["department"].upper() == department.upper()]
-
+    
+    
     if not results:
         return [], "No relevant documents found"
 

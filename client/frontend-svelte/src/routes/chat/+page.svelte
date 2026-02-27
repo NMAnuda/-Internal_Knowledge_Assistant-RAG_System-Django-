@@ -35,21 +35,21 @@
 
   async function loadHistory() {
     try {
-      console.log('🔄 Loading history...');  //  DEBUG
+      console.log('Loading history...');  //  DEBUG
       const token = localStorage.getItem('token');
       const res = await fetch(
         `${import.meta.env.VITE_BACKEND_URL}/api/chat/history/?limit=20&page=1`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      console.log('📥 History response status:', res.status);  //  DEBUG
+      console.log('History response status:', res.status);  //  DEBUG
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      console.log('📦 History data:', data.history?.length || 0);  //  DEBUG
+      console.log(' History data:', data.history?.length || 0);  //  DEBUG
       messages = data.history || [];
       console.log("message",messages)
       error = '';  // Clear error
     } catch (err) {
-      console.error('❌ History load error:', err);  //  DEBUG
+      console.error(' History load error:', err);  //  DEBUG
       error = 'Failed to load chat history. Try asking a question.';
       messages = [];  // Ensure empty
     }
@@ -64,7 +64,7 @@
     question = '';
 
     try {
-      console.log('🚀 Asking:', q);  // 🔥 DEBUG
+      console.log(' Asking:', q); 
       const token = localStorage.getItem('token');
       const res = await fetch(
         `${import.meta.env.VITE_BACKEND_URL}/api/chat/ask/`,
@@ -77,14 +77,14 @@
           body: JSON.stringify({ question: q, department })
         }
       );
-      console.log('📥 Ask response status:', res.status);  // 🔥 DEBUG
+      console.log(' Ask response status:', res.status);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
-      console.log('📦 Ask data:', data);  // 🔥 DEBUG
+      console.log(' Ask data:', data);  
       messages = [data, ...messages];  // Append to top
       loadHistory();  // Re-load full history (ensures sync)
     } catch (err) {
-      console.error('❌ Ask error:', err);  // 🔥 DEBUG
+      console.error('Ask error:', err);  
       error = 'Failed to get answer. Check connection.';
       question = q;  // Restore input
     } finally {
